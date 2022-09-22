@@ -8,12 +8,18 @@ class FlipScreen extends StatelessWidget {
 
   const FlipScreen({Key? key}) : super(key: FlipRoute.key);
 
+
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<FlipListBloc>(context).add(FlipListLoad());
+
+    void _refresh() {
+      BlocProvider.of<FlipListBloc>(context).add(FlipListLoad());
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
-      body: CustomScrollView(
+      body: RefreshIndicator(child: CustomScrollView(
         slivers: [
           const BigBar(
             label: 'meme list',
@@ -55,7 +61,7 @@ class FlipScreen extends StatelessWidget {
             }
           )
         ],
-      )
+      ), onRefresh: () async => _refresh())
     );
   }
 }
