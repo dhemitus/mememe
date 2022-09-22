@@ -19,7 +19,8 @@ class FlipScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: RefreshIndicator(child: CustomScrollView(
+      body: RefreshBox(
+        child: CustomScrollView(
         slivers: [
           const BigBar(
             label: 'meme list',
@@ -28,7 +29,7 @@ class FlipScreen extends StatelessWidget {
             builder: (BuildContext context, FlipListState state) {
               if(state is FlipListLoading) {
                 return const SliverFillRemaining(
-                  child: Center(child: CircularProgressIndicator(color: Colors.amberAccent,)),
+                  child: Center(child: CircularProgressIndicator(color: Colors.black, strokeWidth: 1.0,)),
                 );
               }
               if(state is FlipListLoaded) {
@@ -61,7 +62,7 @@ class FlipScreen extends StatelessWidget {
             }
           )
         ],
-      ), onRefresh: () async => _refresh())
+      ), onRefresh: _refresh)
     );
   }
 }
