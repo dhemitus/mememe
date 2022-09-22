@@ -11,3 +11,17 @@ class MemeLoad extends MemeEvent {
   List<MemeModel> get props => [meme];
 }
 
+class LogoLoad extends MemeEvent {
+  final MemeModel meme;
+  const LogoLoad(this.meme);
+  @override
+  List<MemeModel> get props => [meme];
+}
+
+class LabelLoad extends MemeEvent {
+  final MemeModel meme;
+  const LabelLoad(this.meme);
+  @override
+  List<MemeModel> get props => [meme];
+}
+
