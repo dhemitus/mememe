@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mememe/modules/modules.dart';
-import 'package:mememe/shared/models/imgflip_model.dart';
+import 'package:mememe/shared/shared.dart';
 import 'package:mememe/widgets/widgets.dart';
 
 class FlipScreen extends StatelessWidget {
@@ -17,6 +17,11 @@ class FlipScreen extends StatelessWidget {
       BlocProvider.of<FlipListBloc>(context).add(FlipListLoad());
     }
 
+    void _go(ImgFlipModel flip) {
+      BlocProvider.of<MemeBloc>(context).add(MemeLoad(MemeModel(pic: flip)));
+      Navigator.of(context).pushNamed(MemeRoute.path);
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: RefreshBox(
@@ -28,9 +33,7 @@ class FlipScreen extends StatelessWidget {
           BlocBuilder<FlipListBloc, FlipListState>(
             builder: (BuildContext context, FlipListState state) {
               if(state is FlipListLoading) {
-                return const SliverFillRemaining(
-                  child: Center(child: CircularProgressIndicator(color: Colors.black, strokeWidth: 1.0,)),
-                );
+                return const InLoading();
               }
               if(state is FlipListLoaded) {
                 FlipListModel _data = state.list;
@@ -44,7 +47,7 @@ class FlipScreen extends StatelessWidget {
                     SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
                         ImgFlipModel _item = _list[index];
-                        return SmallBox(label: _item.name!, url: _item.url!, index: index, onClick: () => print(_item));
+                        return SmallBox(label: _item.name!, url: _item.url!, index: index, onClick: () => _go(_item));
                       },
                       childCount: _list.length
                     ) 

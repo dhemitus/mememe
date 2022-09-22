@@ -5,7 +5,7 @@ import 'package:mememe/modules/modules.dart';
 class MemeRoute {
   static const String path = '/meme';
   static const Key key = Key('__memescreen__');
-  /*static final bloc = BlocProvider<FlipListBloc>(
-    create: (context) => FlipListBloc(repo: FlipListRepository())
-  );*/
+  static final bloc = BlocProvider<MemeBloc>(
+    create: (context) => MemeBloc()
+  );
 }

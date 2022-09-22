@@ -6,7 +6,8 @@ class Blocs {
   static MultiBlocProvider blocList(Widget child) {
     return MultiBlocProvider(
       providers: [
-        FlipRoute.bloc
+        FlipRoute.bloc,
+        MemeRoute.bloc
       ], 
       child: child
     );

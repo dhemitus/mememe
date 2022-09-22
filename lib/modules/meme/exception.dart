@@ -1,7 +1,7 @@
 import 'package:mememe/modules/modules.dart';
 
 class MemeException implements Exception {
-  final FlipListModel message;
+  final MemeModel message;
 
   MemeException(this.message);
 }

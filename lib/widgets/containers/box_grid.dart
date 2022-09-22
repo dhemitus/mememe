@@ -9,14 +9,17 @@ class BoxGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 2.0.w),
+      sliver: SliverGrid(
       delegate: delegate, 
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 150.0.w,
-        mainAxisSpacing: 10.0.w,
-        crossAxisSpacing: 10.0.w,
+        mainAxisSpacing: 2.0.w,
+        crossAxisSpacing: 2.0.w,
         childAspectRatio: 1.0
       )
+    ),
     );
   }
 }

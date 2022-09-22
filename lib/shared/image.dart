@@ -7,10 +7,14 @@ class ImageUtils {
     return DecorationImage(image: NetworkImage(url), fit: fit ?? BoxFit.cover, colorFilter: filter);
   }
 
-  static Future<XFile> load() async {
+  static DecorationImage imageFile(File file, {BoxFit? fit, ColorFilter? filter}) {
+    return DecorationImage(image: FileImage(file), fit: fit ?? BoxFit.cover, colorFilter: filter);
+  }
+
+  static Future<File> load() async {
     ImagePicker _picker = ImagePicker();
     XFile? _file = await _picker.pickImage(source: ImageSource.gallery, maxWidth: 350, maxHeight: 350, imageQuality: 60);
 
-    return _file!;
+    return File(_file!.path);
   }
 }

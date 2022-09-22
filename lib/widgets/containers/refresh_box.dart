@@ -12,6 +12,7 @@ class RefreshBox extends StatelessWidget {
         color: Colors.black,
         strokeWidth: 1.0.w,
         backgroundColor: Colors.white,
+        edgeOffset: 0.0,
         child: child,
         onRefresh: () async =>  onRefresh(),
     );
