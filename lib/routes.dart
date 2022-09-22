@@ -5,6 +5,6 @@ class Routes {
   static final Map<String, WidgetBuilder> screens = {
     FlipRoute.path: (BuildContext context) => const FlipScreen(),
     MemeRoute.path: (BuildContext context) => const MemeScreen(),
-    CaptureRoute.path: (BuildContext context) => const CaptureScreen(),
+    CaptureRoute.path: (BuildContext context) => CaptureScreen(),
   };
 }
